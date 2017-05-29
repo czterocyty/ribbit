@@ -3,25 +3,36 @@
 To start:
 
 ```bash
-$ npm install
+$ yarn install
 ```
 
 To develop:
 
 ```bash
-$ npm run dev```
+$ yarn run dev
+```
 
 To build for production:
 
 ```bash
-$ npm run build
+$ yarn run build
 ```
 
 To lint you code:
 
 ```bash
-$ npm run lint
+$ yarn run lint
 ```
+
+## Motivation
+
+I launched this proof-of-concept project to evaluate following projects:
+
+* Vue
+* Vuex
+* Typescript bindings to Vue
+* JEST testing framework 
+* Websocket with RxJS extensions
 
 
 ---
