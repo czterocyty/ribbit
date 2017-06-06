@@ -8,7 +8,7 @@ const _ = require('./utils')
 
 module.exports = {
   entry: {
-    client: './client/index.js'
+    client: './client/index.ts'
   },
   output: {
     path: _.outputPath,
@@ -19,10 +19,11 @@ module.exports = {
     hints: process.env.NODE_ENV === 'production' ? 'warning' : false
   },
   resolve: {
-    extensions: ['.js', '.vue', '.css', '.json'],
+    extensions: ['.js', '.vue', '.css', '.json', '.ts'],
     alias: {
       root: path.join(__dirname, '../client'),
-      components: path.join(__dirname, '../client/components')
+      components: path.join(__dirname, '../client/components'),
+      vue: 'vue/dist/vue.js'
     },
     modules: [
       _.cwd('node_modules'),
@@ -34,8 +35,19 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /\.ts$/,
+        exclude: [/node_modules/],
+        loaders: 'ts-loader',
+        options: {
+          appendTsSuffixTo: [/\.vue$/]
+        }
+      },
+      {
         test: /\.vue$/,
-        loaders: ['vue-loader']
+        loaders: 'vue-loader',
+        options: {
+          esModule: true
+        }
       },
       {
         test: /\.js$/,
@@ -74,5 +86,5 @@ module.exports = {
       }
     ])
   ],
-  target: _.target
+  target: _.target,
 }

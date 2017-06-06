@@ -1,9 +1,8 @@
-import './promise-polyfill'
-import { app } from './app'
-
-// Enable progressive web app support (with offline-plugin)
-if (process.env.NODE_ENV === 'production') {
-  require('./pwa')
-}
-
-app.$mount('#app')
+"use strict";
+exports.__esModule = true;
+var vue_1 = require("vue");
+var v = new vue_1["default"]({
+    el: '#app',
+    template: "\n    <div>\n        Name: <input v-model=\"name\" type=\"text\">        \n    </div>\n    ",
+    data: { name: 'World' }
+});
